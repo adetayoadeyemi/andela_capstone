@@ -1,0 +1,26 @@
+{
+  "name": "frontend",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@mdi/font": "7.4.47",
+    "@nuxtjs/supabase": "^2.0.6",
+    "nuxt": "^4.4.2",
+    "vue": "^3.5.30",
+    "vuetify": "^4.0.2",
+    "vuetify-nuxt-module": "^1.0.0-beta.1"
+  },
+  "devDependencies": {
+    "@nuxt/fonts": "^0.14.0",
+    "@vueuse/core": "^14.2.1",
+    "@vueuse/nuxt": "^14.2.1",
+    "sass": "^1.98.0"
+  }
+}

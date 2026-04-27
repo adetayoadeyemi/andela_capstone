@@ -1,0 +1,56 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs & debug
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Dependencies
+node_modules/
+
+# Environment & secrets (keep *.example committed)
+.env
+.env.*
+!.env.example
+!**/.env.example
+
+# NestJS (backend)
+dist/
+build/
+coverage/
+*.tsbuildinfo
+
+# Nuxt / Nitro (frontend)
+.nuxt/
+.output/
+.nitro/
+.cache/
+.data/
+
+# Optional: local Supabase CLI (if you use it later)
+.supabase/
+
+# Test / tooling artifacts
+*.lcov
+.eslintcache
+
+# IDEs (uncomment if you do not want these in Git)
+# .vscode/
+# .idea/
+
+# Infra (Terraform — harmless if folder stays empty)
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
