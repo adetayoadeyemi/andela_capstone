@@ -47,10 +47,13 @@ coverage/
 *.tfstate
 *.tfstate.*
 .terraform/
-.terraform.lock.hcl
+# Commit infra/.terraform.lock.hcl for reproducible provider versions (do not ignore).
 crash.log
 crash.*.log
 override.tf
 override.tf.json
 *_override.tf
 *_override.tf.json
+
+# Terraform local variables (often contain secrets)
+infra/terraform.tfvars

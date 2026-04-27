@@ -1,0 +1,22 @@
+# Copy to terraform.tfvars (gitignored) and fill in.
+# aws configure  # or set AWS_ACCESS_KEY_ID / AWS_SECRET_ACCESS_KEY / AWS_SESSION_TOKEN
+
+project_name = "capstone"
+environment  = "dev"
+aws_region     = "us-east-1"
+
+# Tag pushed to ECR (must exist before App Runner can become healthy).
+backend_image_tag = "latest"
+
+# All keys become App Runner environment variables (sensitive values live in Terraform state).
+backend_environment = {
+  DATABASE_URL                = "postgresql://..."
+  OPENAI_API_KEY              = "sk-..."
+  WHATSAPP_VERIFY_TOKEN       = "..."
+  WHATSAPP_ACCESS_TOKEN       = "..."
+  WHATSAPP_PHONE_NUMBER_ID    = "..."
+  SUPABASE_URL                = "https://xxx.supabase.co"
+  SUPABASE_SERVICE_ROLE_KEY   = "..."
+  # Optional overrides:
+  # WHATSAPP_API_URL = "https://graph.facebook.com/v22.0/PHONE_ID/messages"
+}
