@@ -59,7 +59,7 @@ resource "aws_cloudfront_distribution" "frontend" {
     viewer_protocol_policy = "redirect-to-https"
 
     cache_policy_id          = aws_cloudfront_cache_policy.frontend_static.id
-    origin_request_policy_id = aws_cloudfront_origin_request_policy.frontend_s3.id
+    origin_request_policy_id = data.aws_cloudfront_origin_request_policy.s3_cors.id
   }
 
   restrictions {
@@ -109,5 +109,8 @@ resource "aws_s3_bucket_policy" "frontend" {
   bucket = aws_s3_bucket.frontend.id
   policy = data.aws_iam_policy_document.frontend_bucket_policy.json
 
-  depends_on = [aws_s3_bucket_public_access_block.frontend]
+  depends_on = [
+    aws_s3_bucket_public_access_block.frontend,
+    aws_cloudfront_distribution.frontend,
+  ]
 }

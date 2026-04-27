@@ -79,6 +79,14 @@ The app uses `ssr: false`; build outputs static assets under `frontend/.output/p
 
 Open the site at `frontend_cloudfront_url` from `terraform output`.
 
+### Frontend shows S3 XML `AccessDenied`
+
+The bucket is **private on purpose**. Only **CloudFront** may read objects.
+
+1. Open only the **CloudFront** URL (from `terraform output -raw frontend_cloudfront_url`), not `https://<bucket>.s3.<region>.amazonaws.com/...` and not an “Object URL” from the S3 console — those hit S3 directly and return `AccessDenied`.
+2. After changing Terraform (e.g. origin request policy), run `terraform apply` again.
+3. Ensure the site was uploaded: `aws s3 ls s3://$(terraform output -raw frontend_bucket_name)/` should list at least `index.html`.
+
 ## Outputs
 
 Run `terraform output` for:

@@ -22,17 +22,7 @@ resource "aws_cloudfront_cache_policy" "frontend_static" {
   }
 }
 
-resource "aws_cloudfront_origin_request_policy" "frontend_s3" {
-  name    = "${local.name_prefix}-s3-origin"
-  comment = "Minimal origin request for private S3 + OAC"
-
-  cookies_config {
-    cookie_behavior = "none"
-  }
-  headers_config {
-    header_behavior = "none"
-  }
-  query_strings_config {
-    query_string_behavior = "none"
-  }
+# Origin requests use AWS managed policy (resolved by name — avoids wrong UUIDs).
+data "aws_cloudfront_origin_request_policy" "s3_cors" {
+  name = "Managed-CORS-S3Origin"
 }
